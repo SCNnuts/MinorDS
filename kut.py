@@ -143,7 +143,7 @@ price = listings_df.groupby('neighbourhood').price.mean()
 # In[142]:
 
 
-price.head()
+#price.head()
 
 
 # In[87]:
@@ -155,7 +155,7 @@ neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 # In[88]:
 
 
-neighbourhoods_geoj.head()
+#neighbourhoods_geoj.head()
 
 
 # In[100]:
@@ -176,7 +176,7 @@ folium.Choropleth(geo_data = neighbourhoods_geoj['geometry'].__geo_interface__,
 
 m.add_child(fgp1)
 m.add_child(folium.LayerControl())
-m
+#m
 
 
 # In[104]:
@@ -186,7 +186,7 @@ m_1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 
 HeatMap(data=apartments[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
 
-m_1
+#m_1
 
 
 # In[154]:
@@ -200,7 +200,7 @@ Choropleth(geo_data = neighbourhoods_geoj['geometry'],
            fill_color='BrBG', 
            legend_name='Gemiddelde prijs (€)'
           ).add_to(m2)
-m2
+#m2
 
 
 # In[114]:
@@ -219,7 +219,7 @@ cluster = plugins.MarkerCluster(locations=locations,
                popups=listings_df["name"].tolist())  
 m_3.add_child(cluster)
 
-m_3
+#m_3
 
 
 # In[117]:
@@ -233,19 +233,19 @@ for idx, row in listings_df.iterrows():
         mc.add_child(Marker([row['latitude'], row['longitude']]))
 m_4.add_child(mc)
 
-m_4
+#m_4
 
 
 # In[124]:
 
 
-sns.histplot(data=listings_df, x='price')
+#sns.histplot(data=listings_df, x='price')
 
 
 # In[122]:
 
 
-sns.boxplot(data=listings_df, x='price')
+#sns.boxplot(data=listings_df, x='price')
 
 
 # In[155]:
@@ -253,13 +253,13 @@ sns.boxplot(data=listings_df, x='price')
 
 fig = px.histogram(listings_df, x='price', labels={'count': 'aantal', 'price': 'Prijs (€)'}, title='Verdeling van Airbnb prijzen in Amsterdam')
 fig.update_xaxes(rangeslider_visible=True)
-fig.show()
+#fig.show()
 
 
 # In[138]:
 
 
-listings_df['neighbourhood'].value_counts()
+#listings_df['neighbourhood'].value_counts()
 
 
 # ## Streamlit
