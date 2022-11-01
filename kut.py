@@ -255,7 +255,7 @@ m_4.add_child(mc)
 fig = px.histogram(listings_df, x='price', labels={'count': 'aantal', 'price': 'Prijs (€)'}, title='Verdeling van Airbnb prijzen in Amsterdam')
 fig.update_xaxes(rangeslider_visible=True)
 #fig.show()
-st.pyplot(fig)
+st.write(fig)
 
 # In[138]:
 
