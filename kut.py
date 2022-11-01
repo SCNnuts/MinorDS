@@ -8,6 +8,7 @@
 # In[153]:
 
 
+import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
@@ -254,7 +255,7 @@ m_4.add_child(mc)
 fig = px.histogram(listings_df, x='price', labels={'count': 'aantal', 'price': 'Prijs (€)'}, title='Verdeling van Airbnb prijzen in Amsterdam')
 fig.update_xaxes(rangeslider_visible=True)
 #fig.show()
-
+st.pyplot(fig)
 
 # In[138]:
 
@@ -273,7 +274,6 @@ fig.update_xaxes(rangeslider_visible=True)
 # In[140]:
 
 
-import streamlit as st
 
 
 # In[156]:
@@ -281,4 +281,3 @@ import streamlit as st
 
 st.title('Airbnb')
 
-st.pyplot(fig)
