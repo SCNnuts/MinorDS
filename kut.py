@@ -224,6 +224,9 @@ Eerst wordt er gekeken naar de verdeling van het aantal personen per AIRBNB loca
     
     fig2 = plt.figure(figsize=(10,4))
     plt.hist(personen_df['accommodates'], bins=10)
+    plt.title('Verdeling van aantal personen')
+    plt.xlabel('Aantal personen')
+    plt.ylabel('Aantal')
     st.pyplot(fig2)
     
     st.text('''Uit de histogram blijkt dat de 2 persoons AIRBNB het meest voorkomt in Amsterdam. En hoe meer personen in de AIRBNB kunnen, hoe minder deze voorkomen. 
