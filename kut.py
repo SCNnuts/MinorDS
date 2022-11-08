@@ -38,7 +38,7 @@ woz_df = pd.read_csv('woz.csv')
 
 m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 
-HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
+HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m1)
 
 
 # In[19]:
