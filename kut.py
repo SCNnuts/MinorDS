@@ -23,13 +23,20 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[47]:
+# In[49]:
 
 
 listings_df = pd.read_csv('listings.csv')
 neighbourhoods_geoj = gpd.read_file('neighbourhoods.geojson')
 woz_df = pd.read_csv('woz.csv')
 personen_df = pd.read_csv('personen.csv')
+ratings_df = pd.read_csv('PriceRatingDf.csv')
+
+
+# In[55]:
+
+
+ratings_df = ratings_df.rename(columns={'review_scores_rating':'Review score', 'positive':'Review score model', 'price':'Prijs'})
 
 
 # ## Maps
@@ -182,13 +189,29 @@ maar eerst wordt er gekeken of de Spacy package de comments accuraat heeft omgez
 De spreiding van beide scores is hieronder weergegeven in een boxplot.''')
     
     ### BOXPLOT ###
+    ratings_model_melted = pd.melt(ratings_df[['Review score model','Review score']])
+    sns.boxplot(y='variable',x='value',data=ratings_model_melted)
+    
+    fig4 = plt.figure(figsize=(10,4))
+    sns.boxplot(y='variable',x='value',data=ratings_model_melted)
+    st.pyplot(fig4)
     
     st.text('''Uit de boxplot blijkt ook dat de scores overeenkomen, aangezien beide boxen boven elkaar liggen.
 Verder is er gekeken of er een relatie is tussen de AIRBNB review-score en de AIRBNB prijs. Deze is weergegeven in de Scatterplot.''')
     
     ### SCATTERPLOT ###
     
+    fig5 = plt.figure(figsize=(10,4))
+    sns.scatterplot(data=ratings_df, x='Review score', y='Prijs')
+    st.pyplot(fig5)
+    
     st.text('''Uit de scatterplot is geen duidelijke relatie te vinden tussen de review score en de prijs. Alle dots liggen verspreid door de plot en er is geen duidelijke trend te vinden.''')
+
+
+# In[60]:
+
+
+ratings_df.head()
 
 
 # ### H5 Aantal Personen
