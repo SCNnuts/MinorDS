@@ -142,6 +142,8 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
+    st_data = st_folium(m1, width=700)
+
     if option == 'Heatmap':
         st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
