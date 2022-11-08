@@ -212,7 +212,7 @@ van de accuracy weergeven is.''')
     
     ### BOXPLOT ###
     fig6 = plt.figure(figsize=(10,4))
-    sns.boxplot(data=ratings_df, x='accuracy').set(title='Spreiding van de afwijking op originele score', xlabel='Accuracy', ylabel='Review scores model')
+    sns.boxplot(data=ratings_df, x='accuracy').set(title='Spreiding van de accuracy van het model', xlabel='Accuracy', ylabel='Review scores model')
     st.pyplot(fig6)
     
     st.text('''Ook in de accuracy boxplot is te zien dat de volledige boxplot binnen de +10 en -10
