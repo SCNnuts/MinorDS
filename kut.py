@@ -45,6 +45,7 @@ HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3)
 
 
 price = listings_df.groupby('neighbourhood').price.mean()
+neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 
 m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
 
