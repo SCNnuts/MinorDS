@@ -23,17 +23,18 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[17]:
+# In[47]:
 
 
 listings_df = pd.read_csv('listings.csv')
 neighbourhoods_geoj = gpd.read_file('neighbourhoods.geojson')
 woz_df = pd.read_csv('woz.csv')
+personen_df = pd.read_csv('personen.csv')
 
 
 # ## Maps
 
-# In[18]:
+# In[39]:
 
 
 m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
@@ -41,7 +42,7 @@ m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m1)
 
 
-# In[19]:
+# In[43]:
 
 
 price = listings_df.groupby('neighbourhood').price.mean()
@@ -119,7 +120,7 @@ Hieronder zijn kleine delen van de gebruikte datasets te zien.''')
 
 # ### H3 Locatie + WOZ
 
-# In[26]:
+# In[46]:
 
 
 with h3:
@@ -139,12 +140,18 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
     
-    fig, ax = plt.subplots(figsize=(10,4))
-    ax = sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
+    fig = plt.figure(figsize=(10,4))
+    sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
     st.pyplot(fig)
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn getekend kan worden tussen de punten van de scatterplot. 
 De AIRBNB prijs hangt dus zeker af van de huisprijs. In de volgende slide wordt gekeken of de reviews een correlatie hebben met de AIRBNB prijs.''')
+
+
+# In[45]:
+
+
+fig.show()
 
 
 # ### H4 Reviews
@@ -186,7 +193,7 @@ Verder is er gekeken of er een relatie is tussen de AIRBNB review-score en de AI
 
 # ### H5 Aantal Personen
 
-# In[28]:
+# In[48]:
 
 
 with h5:
@@ -194,12 +201,16 @@ with h5:
     st.text('''De relatie tussen het aantal personen in een AIRBNB locatie en de AIRBNB prijs wordt in dit deel onder de loep genomen. 
 Eerst wordt er gekeken naar de verdeling van het aantal personen per AIRBNB locatie.''')
     
-    ### HISTOGRAM ###
+    fig2 = plt.figure(figsize=(10,4))
+    plt.hist(personen_df['accommodates'], bins=10)
+    st.pyplot(fig2)
     
     st.text('''Uit de histogram blijkt dat de 2 persoons AIRBNB het meest voorkomt in Amsterdam. En hoe meer personen in de AIRBNB kunnen, hoe minder deze voorkomen. 
 Nu wordt er een regressieplot gemaakt tussen het aantal personen en de prijs.''')
     
-    ### REGRESSIE ###
+    fig3 = plt.figure(figsize=(10,4))
+    sns.regplot(data=personen_df, x='accommodates', y='price', scatter_kws={'alpha':0.25}, x_jitter=0.1)
+    st.pyplot(fig3)
     
     st.text('''Uit de bovenstaande regressieplot blijkt dat er correlatie is tussen het aantal personen per AIRBNB en de prijs van de AIRBNB, want hoe meer personen er in de AIRBNB kunnen hoe hoger de prijs wordt.''')
 
