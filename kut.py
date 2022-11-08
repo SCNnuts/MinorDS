@@ -71,8 +71,7 @@ Choropleth(geo_data = neighbourhoods_geoj['geometry'],
 
 
 st.set_page_config(
-    page_title="VA Eind",
-    layout="wide")
+    page_title="VA Eind")
 
 
 # In[21]:
