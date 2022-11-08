@@ -129,7 +129,7 @@ datasets te zien.''')
     listings_df_head=listings_df.head()
     st.dataframe(listings_df_head)
     
-    reviews_details_drop = reviews_details_df.drop('Unnamed: 0')
+    reviews_details_drop = reviews_details_df.drop('Unnamed: 0', axis=1)
     st.text('''reviews_details.csv, binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)''')
     st.dataframe(reviews_details_drop)
     
