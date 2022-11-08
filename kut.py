@@ -36,7 +36,7 @@ woz_df = pd.read_csv('woz.csv')
 # In[18]:
 
 
-m_1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
+m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 
 HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
 
@@ -131,9 +131,9 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
     if option == 'Heatmap':
-        st_data = st_folium(m_1)
+        st_data = st_folium(m1)
     elif option == 'Choropleth':
-        st_data = st_folium(m_2)
+        st_data = st_folium(m2)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
