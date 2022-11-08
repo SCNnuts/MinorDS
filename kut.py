@@ -124,6 +124,17 @@ reviews van de AIRBNB's in Amsterdam. Hieronder zijn kleine delen van de gebruik
 datasets te zien.''')
     
     ### DATAFRAMES ###
+    listings_df_head=listings_df.head()
+    st.dataframe(listings_df_head)
+    
+    woz_df_head = woz_df.head()
+    st.dataframe(woz_df_head)
+
+    personen_df_head = personen_df.head()
+    st.dataframe(personen_df_head)
+    
+    ratings_df_head=ratings_df.head()
+    st.dataframe(ratings_df_head)
 
 
 # ### H3 Locatie + WOZ
