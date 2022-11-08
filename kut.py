@@ -99,14 +99,18 @@ from PIL import Image
 
 with h1:
     st.header('Inleiding')
-    st.text('''Dit is een verslag van het onderzoek naar de AIRBNB prijs in Amsterdam. Er wordt gekeken naar welke factoren de grootste invloed kunnen hebben op deze prijs. 
-De data die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
+    st.text('''Dit is een dashboard van het onderzoek naar de AIRBNB prijs in Amsterdam. Er wordt
+gekeken naar welke factoren de grootste invloed kunnen hebben op deze prijs. De data
+die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRBNB 
+situatie op 6 december 2018.''')
     
     image = Image.open('Airbnb.jpg')
     st.image(image, width=700)
 
-    st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal Personen de grootste invloed hebben op de AIRBNB prijs. 
-In de volgende slides zal hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worden.''')
+    st.text('''
+De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal 
+Personen de grootste invloed hebben op de AIRBNB prijs. In de volgende slides zal 
+hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worden.''')
 
 
 # ### H2 Gebruikte datasets
