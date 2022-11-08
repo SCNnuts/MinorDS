@@ -30,7 +30,7 @@ listings_df = pd.read_csv('listings.csv')
 neighbourhoods_geoj = gpd.read_file('neighbourhoods.geojson')
 woz_df = pd.read_csv('woz.csv')
 personen_df = pd.read_csv('personen.csv')
-ratings_df = pd.read_csv('PriceRatingDf.csv')
+ratings_df = pd.read_csv('PriceRatingDF.csv')
 
 
 # In[55]:
