@@ -163,14 +163,14 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
             Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
                        data=price, 
                        key_on="feature.id", 
-                       fill_color='BrBG', 
+                       fill_color='YlOrRd', 
                        legend_name='Gemiddelde prijs (€)'
                       ).add_to(m2)
         elif option2 == 'Gemiddelde beschikbaarheid':
             Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
                        data=availability, 
                        key_on="feature.id", 
-                       fill_color='BrBG', 
+                       fill_color='YlOrRd', 
                        legend_name='Gemiddelde beschikbaarheid (dagen)'
                       ).add_to(m2)
         st_data = st_folium(m2, width=700)
