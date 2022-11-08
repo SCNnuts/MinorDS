@@ -71,7 +71,7 @@ Choropleth(geo_data = neighbourhoods_geoj['geometry'],
 
 
 st.set_page_config(
-    page_title="VA Eind")
+    page_title="VA Eind",)
 
 
 # In[21]:
@@ -105,10 +105,9 @@ die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRB
 situatie op 6 december 2018.''')
     
     image = Image.open('Airbnb.jpg')
-    st.image(image, width=700)
+    st.image(image, width=800)
 
-    st.text('''
-De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal 
+    st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal 
 Personen de grootste invloed hebben op de AIRBNB prijs. In de volgende slides zal 
 hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worden.''')
 
@@ -120,12 +119,11 @@ hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worde
 
 with h2:
     st.header('Gebruikte datasets')
-    st.text('''De datasets die gebruikt worden tijdens het onderzoek bevatten locaties, prijs en reviews van de AIRBNB's in Amsterdam. 
-Hieronder zijn kleine delen van de gebruikte datasets te zien.''')
+    st.text('''De datasets die gebruikt worden tijdens het onderzoek bevatten locaties, prijs en
+reviews van de AIRBNB's in Amsterdam. Hieronder zijn kleine delen van de gebruikte 
+datasets te zien.''')
     
     ### DATAFRAMES ###
-    
-    st.text('''Hieronder een lijst met de betekenis van de variabelen.''')
 
 
 # ### H3 Locatie + WOZ
@@ -135,33 +133,34 @@ Hieronder zijn kleine delen van de gebruikte datasets te zien.''')
 
 with h3:
     st.header('Locatie & Huisprijs')
-    st.text('''Om te bepalen in welke maten de locatie van de AIRBNB een correlatie heeft met de prijs is de locatiedata van de AIRBNB's van groot belang. 
-Met de LAT en LNG variabelen kan er in kaart gebracht worden waar in Amsterdam de AIRBNB's gevestigd zijn. 
-Verder wordt hier gebruik gemaakt van de WOZ dataset, waarin de gemiddelde prijs van panden per buurt zijn beschreven. 
-Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de AIRBNB.''')
+    st.text('''Om te bepalen in welke maten de locatie van de AIRBNB een correlatie heeft met de  
+prijs is de locatiedata van de AIRBNB's van groot belang. Met de LAT en LNG 
+variabelen kan er in kaart gebracht worden waar in Amsterdam de AIRBNB's gevestigd 
+zijn. Verder wordt hier gebruik gemaakt van de WOZ dataset, waarin de gemiddelde 
+prijs van panden per buurt zijn beschreven. Hiermee kan bepaald worden wat de 
+invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
     if option == 'Heatmap':
-        st_data = st_folium(m1, width=700)
+        st_data = st_folium(m1, width=800)
     elif option == 'Choropleth':
-        st_data = st_folium(m2, width=700)
+        st_data = st_folium(m2, width=800)
     
-    st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
-Uit de grafiek blijkt dat......''')
+    st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op AIRBNB 
+prijs per nacht. Uit de kaart blijkt dat de AIRBNB prijs per nacht in het centrum
+van Amsterdam het hoogste is, en hoe verder de AIRBNB buiten het centrum zit hoe 
+goedkoper het wordt.''')
     
     fig = plt.figure(figsize=(10,4))
     sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs').set(title='Het verband tussen de huisprijs en Airbnb prijs', xlabel='Gemiddelde huisprijs (€)', ylabel='Gemiddelde Airbnb prijs (€)')
     st.pyplot(fig)
     
-    st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn getekend kan worden tussen de punten van de scatterplot. 
-De AIRBNB prijs hangt dus zeker af van de huisprijs. In de volgende slide wordt gekeken of de reviews een correlatie hebben met de AIRBNB prijs.''')
-
-
-# In[45]:
-
-
-fig.show()
+    st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs 
+weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn 
+getekend kan worden tussen de puntenvan de scatterplot. De AIRBNB prijs hangt dus 
+zeker af van de huisprijs. In de volgende slide wordt gekeken of de reviews een 
+correlatie hebben met de AIRBNB prijs.''')
 
 
 # ### H4 Reviews
@@ -171,25 +170,34 @@ fig.show()
 
 with h4:
     st.header('Reviews')
-    st.text('''Voor het onderzoek is er van uit gegaan dat de reviews een grote invloed hebben op de AIRBNB prijs. 
-Er is tijdens het onderzoek veel tijd besteed om de reviews goed in kaart te brengen. Er zijn in totaal 430k reviews achtergelaten op AIRBNB's in Amsterdam, en hiervan is een grote dataset beschikbaar. 
-Het probleem met deze dataset is dat er geen score van de review beschikbaar was, alleen een comment. Met de Spacy package was het mogelijk om deze comments om te zetten naar positieve/negatieve reviews om zo een score per review te bepalen.
-Uiteindelijk waren er wel gemiddelde scores per AIRBNB adres beschikbaar. Deze scores zijn verder gebruikt in het onderzoek om te kijken wat de correlatie is tussen de AIRBNB prijs en de reviews, 
-maar eerst wordt er gekeken of de Spacy package de comments accuraat heeft omgezet naar positief/negatief.''')
+    st.text('''Voor het onderzoek is er van uit gegaan dat de reviews een grote invloed hebben op  
+de AIRBNB prijs. Er is tijdens het onderzoek veel tijd besteed om de reviews goed   
+in kaart te brengen. Er zijn in totaal 430k reviews achtergelaten op AIRBNB's in
+Amsterdam, en hiervan is een grote dataset beschikbaar. Het probleem met deze
+dataset is dat er geen score van de review beschikbaar was, alleen een comment. Met
+de Spacy package was het mogelijk om deze comments om te zetten naar positieve/
+negatieve reviews om zo een score per review te bepalen. Uiteindelijk waren er wel
+gemiddelde scores per AIRBNB adres beschikbaar. Deze scores zijn verder gebruikt in
+het onderzoek om te kijken wat de correlatie is tussen de AIRBNB prijs en de reviews,
+maar eerst wordt er gekeken of de Spacy package de comments accuraat heeft omgezet
+naar positief/negatief.''')
     
     ### DATAFRAME ###
     
-    st.text('''Hierboven is het dataframe te zien waarin de Polarity score is berekend. Aangezien deze score per review is weergeven, moet dit dataframe gesorteerd worden per AIRBNB locatie.''')
+    st.text('''Hierboven is het dataframe te zien waarin de Polarity score is berekend. Aangezien
+deze score per review is weergeven, moet dit dataframe gesorteerd worden per AIRBNB
+locatie. ''')
     
     ### DATAFRAME ###
     
-    st.text('''Nu de Polarity per adres bekend is, kan er gekeken worden of het Spacy package de comments accuraat omgezet heeft naar Polarity.''')
+    st.text('''Nu de Polarity per adres bekend is, kan er gekeken worden of het Spacy package de
+comments accuraat omgezet heeft naar Polarity.''')
     
     ### DATAFRAME ###
     
-    st.text('''In dit dataframe zijn de berekende score en werkelijke score per AIRBNB locatie weergeven. 
-#########################HIER MOET NOG WAT KOMEN OVER DE ACCURACY#################################
-De spreiding van beide scores is hieronder weergegeven in een boxplot.''')
+    st.text('''In dit dataframe zijn de berekende review score en werkelijke score per AIRBNB
+locatie weergeven. De spreiding van beide scores is hieronder weergegeven in een
+boxplot.''')
     
     ### BOXPLOT ###
     ratings_model_melted = pd.melt(ratings_df[['Review score model','Review score']])
@@ -198,22 +206,29 @@ De spreiding van beide scores is hieronder weergegeven in een boxplot.''')
     sns.boxplot(y='variable',x='value',data=ratings_model_melted).set(title='Verdeling van review scores uit het model en originele review scores', xlabel='Review waarde', ylabel='Review types')
     st.pyplot(fig4)
     
-    st.text('''Uit de boxplot blijkt ook dat de scores overeenkomen, aangezien beide boxen boven elkaar liggen.
-Verder is er gekeken of er een relatie is tussen de AIRBNB review-score en de AIRBNB prijs. Deze is weergegeven in de Scatterplot.''')
+    st.text('''Uit de boxplot blijkt ook dat de scores overeenkomen, aangezien beide boxen boven 
+elkaar liggen. Dit is verder ook te zien in de volgende boxplot, waar de spreiding
+van de accuracy weergeven is.''')
+    
+    ### BOXPLOT ###
+    
+    st.text('''Ook in de accuracy boxplot is te zien dat de volledige boxplot binnen de +10 en -10
+valt, dus dat betekent dat de accuracy van de Spacy package heel hoog is (later
+uitgerekend: 93% van de gegenereerde getallenn liggen +10 of -10 bij de echte waarde
+vandaan).''')
+    
+    st.text('''Verder is er gekeken of er een relatie is tussen de AIRBNB review-score en de AIRBNB
+prijs. Deze is weergegeven in de Scatterplot.''')
     
     ### SCATTERPLOT ###
     
     fig5 = plt.figure(figsize=(10,4))
     sns.scatterplot(data=ratings_df, x='Review score', y='Prijs').set(title='Het verband tussen de review score en prijs')
-    st.pyplot(fig5)
+    st.pyplot(fig)
     
-    st.text('''Uit de scatterplot is geen duidelijke relatie te vinden tussen de review score en de prijs. Alle dots liggen verspreid door de plot en er is geen duidelijke trend te vinden.''')
-
-
-# In[60]:
-
-
-ratings_df.head()
+    st.text('''Uit de scatterplot is geen duidelijke relatie te vinden tussen de review score en de 
+prijs. Alle dots liggen verspreid door de plot en er is geen duidelijke trend te 
+vinden.''')
 
 
 # ### H5 Aantal Personen
@@ -223,8 +238,9 @@ ratings_df.head()
 
 with h5:
     st.header('Aantal personen')
-    st.text('''De relatie tussen het aantal personen in een AIRBNB locatie en de AIRBNB prijs wordt in dit deel onder de loep genomen. 
-Eerst wordt er gekeken naar de verdeling van het aantal personen per AIRBNB locatie.''')
+    st.text('''De relatie tussen het aantal personen in een AIRBNB locatie en de AIRBNB prijs wordt
+in dit deel onder de loep genomen. Eerst wordt er gekeken naar de verdeling van het
+aantal personen per AIRBNB locatie.''')
     
     fig2 = plt.figure(figsize=(10,4))
     plt.hist(personen_df['accommodates'], bins=10)
@@ -233,14 +249,17 @@ Eerst wordt er gekeken naar de verdeling van het aantal personen per AIRBNB loca
     plt.ylabel('Aantal')
     st.pyplot(fig2)
     
-    st.text('''Uit de histogram blijkt dat de 2 persoons AIRBNB het meest voorkomt in Amsterdam. En hoe meer personen in de AIRBNB kunnen, hoe minder deze voorkomen. 
-Nu wordt er een regressieplot gemaakt tussen het aantal personen en de prijs.''')
+    st.text('''Uit de histogram blijkt dat de 2 persoons AIRBNB het meest voorkomt in Amsterdam. En 
+hoe meer personen in de AIRBNB kunnen, hoe minder deze voorkomen. Nu wordt er een 
+regressieplot gemaakt tussen het aantal personen en de prijs.''')
     
     fig3 = plt.figure(figsize=(10,4))
     sns.regplot(data=personen_df, x='accommodates', y='price', scatter_kws={'alpha':0.25}, x_jitter=0.1).set(title='Verband tussen het aantal personen en de Airbnb prijs', xlabel='Aantal personen', ylabel='Prijs')
     st.pyplot(fig3)
     
-    st.text('''Uit de bovenstaande regressieplot blijkt dat er correlatie is tussen het aantal personen per AIRBNB en de prijs van de AIRBNB, want hoe meer personen er in de AIRBNB kunnen hoe hoger de prijs wordt.''')
+    st.text('''Uit de bovenstaande regressieplot blijkt dat er correlatie is tussen het aantal 
+personen per AIRBNB en de prijs van de AIRBNB, want hoe meer personen er in de AIRBNB 
+kunnen hoe hoger de prijs wordt.''')
 
 
 # ### H6 Conclusie
