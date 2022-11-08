@@ -65,18 +65,6 @@ Choropleth(geo_data = neighbourhoods_geoj['geometry'],
           ).add_to(m2)
 
 
-# In[62]:
-
-
-m3 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
-
-mc = MarkerCluster()
-for idx, row in listings_df.iterrows():
-    if not math.isnan(row['longitude']) and not math.isnan(row['latitude']):
-        mc.add_child(Marker([row['latitude'], row['longitude']]))
-m3.add_child(mc)
-
-
 # ## Titels
 
 # In[20]:
@@ -155,7 +143,7 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
     if option == 'Heatmap':
-        st_data = st_folium(m3, width=700)
+        st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
         st_data = st_folium(m2, width=700)
     
