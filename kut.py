@@ -55,9 +55,7 @@ from PIL import Image
 
 with h1:
     st.header('Probleemstelling & Hypothese')
-    st.text('''Dit is een verslag van het onderzoek naar de AIRBNB prijs in Amsterdam. Er wordt gekeken naar
-    welke factoren de grootste invloed kunnen hebben op deze prijs. De data die gebruikt is tijdens
-    het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
+    st.text('''Dit is een verslag van het onderzoek naar de AIRBNB prijs in Amsterdam. Er wordt gekeken naar welke factoren de grootste invloed kunnen hebben op deze prijs. De data die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
     
     image = Image.open('Airbnb.jpg')
     st.image(image, width=800)
