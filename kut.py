@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[9]:
 
 
 import pandas as pd
@@ -18,7 +18,43 @@ import plotly.express as px
 from folium import Choropleth, Marker
 from folium.plugins import HeatMap, MarkerCluster, HeatMapWithTime
 import streamlit as st
+from streamlit_folium import st_folium
 
+
+# ## Importing the CSVs
+
+# In[11]:
+
+
+listings_df = pd.read_csv('listings.csv')
+neighbourhoods_geoj = gpd.read_file('neighbourhoods.geojson')
+woz_df = pd.read_csv('woz.csv')
+
+
+# ## Maps
+
+# In[ ]:
+
+
+m_1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
+
+HeatMap(data=apartments[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
+
+
+# In[ ]:
+
+
+m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
+
+Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
+           data=price, 
+           key_on="feature.id", 
+           fill_color='BrBG', 
+           legend_name='Gemiddelde prijs (€)'
+          ).add_to(m2)
+
+
+# ## Titels
 
 # In[2]:
 
@@ -27,8 +63,6 @@ st.set_page_config(
     page_title="VA Eind",
     layout="wide")
 
-
-# ## Titel
 
 # In[3]:
 
@@ -92,12 +126,17 @@ Met de LAT en LNG variabelen kan er in kaart gebracht worden waar in Amsterdam d
 Verder wordt hier gebruik gemaakt van de WOZ dataset, waarin de gemiddelde prijs van panden per buurt zijn beschreven. 
 Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de AIRBNB.''')
     
-    ### KAART ###
+    option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
+    
+    if option == 'Heatmap':
+        st_data = st_folium(m_1)
+    elif option == 'Choropleth':
+        st_data = st_folium(m_2)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
     
-    ### REGRESSIE ###
+    sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn getekend kan worden tussen de punten van de scatterplot. 
 De AIRBNB prijs hangt dus zeker af van de huisprijs. In de volgende slide wordt gekeken of de reviews een correlatie hebben met de AIRBNB prijs.''')
