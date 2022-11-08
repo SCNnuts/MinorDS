@@ -139,9 +139,9 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
     
-    fig, ax = plt.subplots(figsize=(5,2))
+    fig = plt.figure(figsize=(10,4))
     sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
-    ax.legend()
+    st.pyplot(fig)
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn getekend kan worden tussen de punten van de scatterplot. 
 De AIRBNB prijs hangt dus zeker af van de huisprijs. In de volgende slide wordt gekeken of de reviews een correlatie hebben met de AIRBNB prijs.''')
