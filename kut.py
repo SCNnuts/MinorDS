@@ -60,7 +60,7 @@ with h1:
     het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
     
     image = Image.open('Airbnb.jpg')
-    st.image(image)
+    st.image(image, width=800)
 
     st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal Personen de
     grootste invloed hebben op de AIRBNB prijs. In de volgende slides zal hier meer over verteld
