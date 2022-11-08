@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[16]:
 
 
 import pandas as pd
@@ -23,7 +23,7 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[11]:
+# In[17]:
 
 
 listings_df = pd.read_csv('listings.csv')
@@ -33,16 +33,18 @@ woz_df = pd.read_csv('woz.csv')
 
 # ## Maps
 
-# In[ ]:
+# In[18]:
 
 
 m_1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 
-HeatMap(data=apartments[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
+HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m_1)
 
 
-# In[ ]:
+# In[19]:
 
+
+price = listings_df.groupby('neighbourhood').price.mean()
 
 m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
 
@@ -56,7 +58,7 @@ Choropleth(geo_data = neighbourhoods_geoj['geometry'],
 
 # ## Titels
 
-# In[2]:
+# In[20]:
 
 
 st.set_page_config(
@@ -64,13 +66,13 @@ st.set_page_config(
     layout="wide")
 
 
-# In[3]:
+# In[21]:
 
 
 st.title('Welke factoren kunnen de Airbnb prijs beinvloeden in Amsterdam?')
 
 
-# In[ ]:
+# In[22]:
 
 
 h1, h2, h3, h4, h5, h6 = st.tabs(['Probleemstelling & hypothese','Gebruikte datasets','Locatie & Huisprijs','Reviews','Aantal Personen','Conclusie'])
@@ -78,13 +80,13 @@ h1, h2, h3, h4, h5, h6 = st.tabs(['Probleemstelling & hypothese','Gebruikte data
 
 # ### H1 Probleemstelling & hypothese
 
-# In[4]:
+# In[23]:
 
 
 from PIL import Image
 
 
-# In[5]:
+# In[24]:
 
 
 with h1:
@@ -101,7 +103,7 @@ In de volgende slides zal hier meer over verteld worden, maar eerst zullen de da
 
 # ### H2 Gebruikte datasets
 
-# In[ ]:
+# In[25]:
 
 
 with h2:
@@ -116,7 +118,7 @@ Hieronder zijn kleine delen van de gebruikte datasets te zien.''')
 
 # ### H3 Locatie + WOZ
 
-# In[ ]:
+# In[26]:
 
 
 with h3:
@@ -144,7 +146,7 @@ De AIRBNB prijs hangt dus zeker af van de huisprijs. In de volgende slide wordt 
 
 # ### H4 Reviews
 
-# In[ ]:
+# In[27]:
 
 
 with h4:
@@ -181,7 +183,7 @@ Verder is er gekeken of er een relatie is tussen de AIRBNB review-score en de AI
 
 # ### H5 Aantal Personen
 
-# In[ ]:
+# In[28]:
 
 
 with h5:
@@ -201,7 +203,7 @@ Nu wordt er een regressieplot gemaakt tussen het aantal personen en de prijs.'''
 
 # ### H6 Conclusie
 
-# In[ ]:
+# In[29]:
 
 
 with h6:
