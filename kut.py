@@ -125,15 +125,15 @@ reviews van de AIRBNB's in Amsterdam. Hieronder zijn kleine delen van de gebruik
 datasets te zien.''')
     
     ### DATAFRAMES ###
-    st.write('listings.csv, binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)')
+    st.write('listings.csv, van kaggle.com binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)'')
     listings_df_head=listings_df.head()
     st.dataframe(listings_df_head)
     
-    reviews_details_drop = reviews_details_df.drop('Unnamed: 0', axis=1)
-    st.write('reviews_details.csv, binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)')
+    reviews_details_drop = reviews_details_df.drop('Unnamed: 0', axis-1)
+    st.write('reviews_details.csv, van kaggle.com binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)')
     st.dataframe(reviews_details_drop)
     
-    st.write('woz.xlsx, binnengehaald met API [link](https://data.amsterdam.nl/datasets/03G1QUEsOQ2Xkw/woningmarkt-amsterdam/)')
+    st.write('woz.xlsx, van data.amsterdam.nl binnengehaald met API [link](https://data.amsterdam.nl/datasets/03G1QUEsOQ2Xkw/woningmarkt-amsterdam/)')
     woz_df_head = woz_df[['gebied','gemiddelde WOZ-waarde','gemiddelde WOZ-waarde per m2']].head()
     st.dataframe(woz_df_head)
 
