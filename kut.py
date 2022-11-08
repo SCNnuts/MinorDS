@@ -139,7 +139,7 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
     
-    fig = plt.subplots(figsize=(5,2))
+    fig, ax = plt.subplots(figsize=(5,2))
     sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
     st.pyplot(fig)
     
