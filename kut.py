@@ -23,7 +23,7 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[49]:
+# In[70]:
 
 
 listings_df = pd.read_csv('listings.csv')
@@ -54,16 +54,17 @@ HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3)
 
 
 price = listings_df.groupby('neighbourhood').price.mean()
+availability = listings_df.groupby('neighbourhood').availability_365.mean()
 neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 
 m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
 
-Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
-           data=price, 
-           key_on="feature.id", 
-           fill_color='BrBG', 
-           legend_name='Gemiddelde prijs (€)'
-          ).add_to(m2)
+# Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
+#            data=price, 
+#            key_on="feature.id", 
+#            fill_color='BrBG', 
+#            legend_name='Gemiddelde prijs (€)'
+#           ).add_to(m2)
 
 
 # ## Titels
@@ -115,7 +116,7 @@ hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worde
 
 # ### H2 Gebruikte datasets
 
-# In[25]:
+# In[64]:
 
 
 with h2:
@@ -157,7 +158,21 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     if option == 'Heatmap':
         st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
-        option2 = st.selectbox('Peepee poopoo?', ('pee','poo'))
+        option2 = st.selectbox('Wat wil je zien?', ('Gemiddelde prijs','Gemiddelde beschikbaarheid'))
+        if option2 == 'Gemiddelde prijs'
+            Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
+                       data=price, 
+                       key_on="feature.id", 
+                       fill_color='BrBG', 
+                       legend_name='Gemiddelde prijs (€)'
+                      ).add_to(m2)
+        elif option2 == 'Gemiddelde beschikbaarheid'
+            Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
+                       data=availability, 
+                       key_on="feature.id", 
+                       fill_color='BrBG', 
+                       legend_name='Gemiddelde prijs (€)'
+                      ).add_to(m2)
         st_data = st_folium(m2, width=700)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op AIRBNB 
@@ -197,7 +212,7 @@ naar positief/negatief.''')
     
     ### DATAFRAME ###
     image1 = Image.open('image1.png')
-    st.image(image1, width=700)
+    st.image(image1, width=300)
     
     st.text('''Hierboven is het dataframe te zien waarin de Polarity score is berekend. Aangezien
 deze score per review is weergeven, moet dit dataframe gesorteerd worden per AIRBNB
@@ -205,14 +220,14 @@ locatie. ''')
     
     ### DATAFRAME ###
     image2 = Image.open('image2.png')
-    st.image(image2, width=200)
+    st.image(image2, width=300)
     
     st.text('''Nu de Polarity per adres bekend is, kan er gekeken worden of het Spacy package de
 comments accuraat omgezet heeft naar Polarity.''')
     
     ### DATAFRAME ###
     image3 = Image.open('image3.png')
-    st.image(image3, width=700)
+    st.image(image3, width=300)
     
     st.text('''In dit dataframe zijn de berekende review score en werkelijke score per AIRBNB
 locatie weergeven. De spreiding van beide scores is hieronder weergegeven in een
