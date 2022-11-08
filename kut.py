@@ -204,7 +204,7 @@ locatie. ''')
     
     ### DATAFRAME ###
     image2 = Image.open('image2.png')
-    st.image(image2, width=100)
+    st.image(image2, width=200)
     
     st.text('''Nu de Polarity per adres bekend is, kan er gekeken worden of het Spacy package de
 comments accuraat omgezet heeft naar Polarity.''')
