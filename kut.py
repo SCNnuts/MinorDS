@@ -139,9 +139,9 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
     if option == 'Heatmap':
-        st_data = st_folium(m1, width=500)
+        st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
-        st_data = st_folium(m2, width=500)
+        st_data = st_folium(m2, width=700)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
