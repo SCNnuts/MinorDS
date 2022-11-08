@@ -83,10 +83,10 @@ st.title('Welke factoren kunnen de Airbnb prijs beinvloeden in Amsterdam?')
 # In[22]:
 
 
-h1, h2, h3, h4, h5, h6 = st.tabs(['Probleemstelling & hypothese','Gebruikte datasets','Locatie & Huisprijs','Reviews','Aantal Personen','Conclusie'])
+h1, h2, h3, h4, h5, h6 = st.tabs(['Inleiding','Gebruikte datasets','Locatie & Huisprijs','Reviews','Aantal Personen','Conclusie'])
 
 
-# ### H1 Probleemstelling & hypothese
+# ### H1 Inleiding
 
 # In[23]:
 
@@ -98,7 +98,7 @@ from PIL import Image
 
 
 with h1:
-    st.header('Probleemstelling & Hypothese')
+    st.header('Inleiding')
     st.text('''Dit is een verslag van het onderzoek naar de AIRBNB prijs in Amsterdam. Er wordt gekeken naar welke factoren de grootste invloed kunnen hebben op deze prijs. 
 De data die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
     
