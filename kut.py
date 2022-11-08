@@ -103,7 +103,7 @@ with h1:
 De data die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over de AIRBNB situatie op 6 december 2018.''')
     
     image = Image.open('Airbnb.jpg')
-    st.image(image, width=800)
+    st.image(image, width=700)
 
     st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal Personen de grootste invloed hebben op de AIRBNB prijs. 
 In de volgende slides zal hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worden.''')
@@ -139,9 +139,9 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
     option = st.selectbox('Welke kaart?', ('Heatmap','Choropleth'))
     
     if option == 'Heatmap':
-        st_data = st_folium(m1)
+        st_data = st_folium(m1, width=500)
     elif option == 'Choropleth':
-        st_data = st_folium(m2)
+        st_data = st_folium(m2, width=500)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op huisprijs. In de histogram staat per gebied hoeveel goedkope/dure AIRBNB's er zijn. 
 Uit de grafiek blijkt dat......''')
