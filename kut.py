@@ -31,6 +31,7 @@ neighbourhoods_geoj = gpd.read_file('neighbourhoods.geojson')
 woz_df = pd.read_csv('woz.csv')
 personen_df = pd.read_csv('personen.csv')
 ratings_df = pd.read_csv('PriceRatingDF.csv')
+reviews_details_df = pd.read_csv('reviews_details.csv')
 
 
 # In[55]:
