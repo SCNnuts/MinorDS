@@ -124,17 +124,17 @@ reviews van de AIRBNB's in Amsterdam. Hieronder zijn kleine delen van de gebruik
 datasets te zien.''')
     
     ### DATAFRAMES ###
+    st.text('''listings.csv, binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)''')
     listings_df_head=listings_df.head()
     st.dataframe(listings_df_head)
     
-    woz_df_head = woz_df.head()
-    st.dataframe(woz_df_head)
-
-    personen_df_head = personen_df.head()
-    st.dataframe(personen_df_head)
+    reviews_details_drop = reviews_details.drop('Unnamed: 0')
+    st.text('''reviews_details.csv, binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)''')
+    st.dataframe(reviews_details_drop)
     
-    ratings_df_head=ratings_df.head()
-    st.dataframe(ratings_df_head)
+    st.text('''woz.xlsx, binnengehaald met API [link](https://data.amsterdam.nl/datasets/03G1QUEsOQ2Xkw/woningmarkt-amsterdam/)''')
+    woz_df_head = woz_df[['gebied','gemiddelde WOZ-waarde','gemiddelde WOZ-waarde per m2']].head()
+    st.dataframe(woz_df_head)
 
 
 # ### H3 Locatie + WOZ
