@@ -157,6 +157,7 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     if option == 'Heatmap':
         st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
+        option2 = st.selectbox('Peepee poopoo?', ('pee','poo'))
         st_data = st_folium(m2, width=700)
     
     st.text('''Op de bovenstaande kaart staan alle AIRBNB's in Amsterdam, gesorteerd op AIRBNB 
