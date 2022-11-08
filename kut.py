@@ -147,7 +147,7 @@ Hiermee kan bepaald worden wat de invloed is van de huisprijs op de prijs van de
 Uit de grafiek blijkt dat......''')
     
     fig = plt.figure(figsize=(10,4))
-    sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs')
+    sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs').set(title='Het verband tussen de huisprijs en Airbnb prijs', xlabel='Gemiddelde huisprijs (€)', ylabel='Gemiddelde Airbnb prijs (€)')
     st.pyplot(fig)
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn getekend kan worden tussen de punten van de scatterplot. 
