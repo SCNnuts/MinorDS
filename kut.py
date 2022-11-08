@@ -125,7 +125,7 @@ reviews van de AIRBNB's in Amsterdam. Hieronder zijn kleine delen van de gebruik
 datasets te zien.''')
     
     ### DATAFRAMES ###
-    st.write('listings.csv, van kaggle.com binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)'')
+    st.write('listings.csv, van kaggle.com binnengehaald met de Kaggle API [link](https://www.kaggle.com/datasets/erikbruin/airbnb-amsterdam?select=listings.csv)')
     listings_df_head=listings_df.head()
     st.dataframe(listings_df_head)
     
