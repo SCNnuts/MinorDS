@@ -78,7 +78,7 @@ st.set_page_config(
 # In[21]:
 
 
-st.title('Welke factoren kunnen de Airbnb prijs beinvloeden in Amsterdam?')
+st.title('Welke factoren kunnen de Airbnb prijs beïnvloeden in Amsterdam?')
 
 
 # In[22]:
