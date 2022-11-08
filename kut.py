@@ -227,7 +227,7 @@ prijs. Deze is weergegeven in de Scatterplot.''')
     
     fig5 = plt.figure(figsize=(10,4))
     sns.scatterplot(data=ratings_df, x='Review score', y='Prijs').set(title='Het verband tussen de review scores en de Airbnb prijs', xlabel='Review score', ylabel='Prijs (€)')
-    st.pyplot(fig)
+    st.pyplot(fig5)
     
     st.text('''Uit de scatterplot is geen duidelijke relatie te vinden tussen de review score en de 
 prijs. Alle dots liggen verspreid door de plot en er is geen duidelijke trend te 
