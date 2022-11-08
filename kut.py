@@ -61,9 +61,8 @@ De data die gebruikt is tijdens het onderzoek komt van Kaggle en bevat data over
     image = Image.open('Airbnb.jpg')
     st.image(image, width=800)
 
-    st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal Personen de
-    grootste invloed hebben op de AIRBNB prijs. In de volgende slides zal hier meer over verteld
-    worden, maar eerst zullen de datasets verduidelijkt worden.''')
+    st.text('''De verwachte uitkomst van het onderzoek is dat de Huisprijs, Reviews en Aantal Personen de grootste invloed hebben op de AIRBNB prijs. 
+In de volgende slides zal hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worden.''')
 
 
 # ### H2 Gebruikte datasets
