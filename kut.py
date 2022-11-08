@@ -211,6 +211,9 @@ elkaar liggen. Dit is verder ook te zien in de volgende boxplot, waar de spreidi
 van de accuracy weergeven is.''')
     
     ### BOXPLOT ###
+    fig6 = plt.figure(figsize=(10,4))
+    sns.boxplot(data=ratings_df, x='accuracy').set(title='Spreiding van de afwijking op originele score', xlabel='Accuracy', ylabel='Review scores model')
+    st.pyplot(fig6)
     
     st.text('''Ook in de accuracy boxplot is te zien dat de volledige boxplot binnen de +10 en -10
 valt, dus dat betekent dat de accuracy van de Spacy package heel hoog is (later
