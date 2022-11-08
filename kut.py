@@ -188,11 +188,9 @@ maar eerst wordt er gekeken of de Spacy package de comments accuraat heeft omgez
 De spreiding van beide scores is hieronder weergegeven in een boxplot.''')
     
     ### BOXPLOT ###
-    ratings_model_melted = pd.melt(ratings_df[['Review score model','Review score']])
-    sns.boxplot(y='variable',x='value',data=ratings_model_melted)
     
     fig4 = plt.figure(figsize=(10,4))
-    sns.boxplot(y='variable',x='value',data=ratings_model_melted)
+    sns.boxplot(y='variable',x='value',data=ratings_model_melted).set(title='Verdeling van review scores uit het model en originele review scores', xlabel='Review waarde', ylabel='Review types')
     st.pyplot(fig4)
     
     st.text('''Uit de boxplot blijkt ook dat de scores overeenkomen, aangezien beide boxen boven elkaar liggen.
