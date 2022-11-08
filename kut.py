@@ -171,7 +171,7 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
                        data=availability, 
                        key_on="feature.id", 
                        fill_color='BrBG', 
-                       legend_name='Gemiddelde prijs (€)'
+                       legend_name='Gemiddelde beschikbaarheid (dagen)'
                       ).add_to(m2)
         st_data = st_folium(m2, width=700)
     
