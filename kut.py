@@ -186,12 +186,16 @@ goedkoper het wordt.''')
     sns.regplot(data=woz_df, x='gemiddelde WOZ-waarde', y='gemiddelde Airbnb prijs').set(title='Het verband tussen de huisprijs en Airbnb prijs', xlabel='Gemiddelde huisprijs (€)', ylabel='Gemiddelde Airbnb prijs (€)')
     st.pyplot(fig)
     
+    corr_matrix = np.corrcoef(woz_df['gemiddelde WOZ-waarde'], woz_df['gemiddelde Airbnb prijs'])
+    corr = corr_matrix2[0,1]
+    R_sq = corr**2
+    
     st.code('''corr_matrix = np.corrcoef(woz_df['gemiddelde WOZ-waarde'], woz_df['gemiddelde Airbnb prijs'])
 corr = corr_matrix2[0,1]
 R_sq = corr**2
 R_sq''')
     
-    st.write("Coefficient of determination: "R_sq)
+    st.write("Coefficient of determination: ", R_sq)
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs 
 weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn 
