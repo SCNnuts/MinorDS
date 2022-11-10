@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[16]:
+# In[3]:
 
 
 import pandas as pd
@@ -23,7 +23,7 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[70]:
+# In[4]:
 
 
 listings_df = pd.read_csv('listings.csv')
@@ -32,12 +32,19 @@ woz_df = pd.read_csv('woz.csv')
 personen_df = pd.read_csv('personen.csv')
 ratings_df = pd.read_csv('PriceRatingDF.csv')
 reviews_details_df = pd.read_csv('reviews_details.csv')
+listings_woz = pd.read_csv('listings_woz.csv')
 
 
 # In[55]:
 
 
 ratings_df = ratings_df.rename(columns={'review_scores_rating':'Review score', 'positive':'Review score model', 'price':'Prijs'})
+
+
+# In[5]:
+
+
+listings_df.columns
 
 
 # ## Maps
@@ -55,13 +62,7 @@ HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3)
 
 price = listings_df.groupby('neighbourhood').price.mean()
 #availability = listings_df.groupby('neighbourhood').availability_365.mean()
-
-gem_woz_data={'A Centrum':563409.0,'E West':428650.0,'F Nieuw-West':333983.0,'K Zuid':572937.0,'M Oost':459254.0,'N Noord':356968.0,'T Zuidoost':257697.0}
-gem_woz_index=['A Centrum','E West','F Nieuw-West','K Zuid','M Oost','N Noord','T Zuidoost']
-gem_woz = pd.Series(data=gem_woz_data, index=gem_woz_index)
-gem_woz.index.name = 'neighbourhood'
-gem_woz.name = 'gemiddelde WOZ-waarde'
-
+gemwoz = listings_woz.groupby('neighbourhood')['gemiddelde WOZ-waarde'].mean()
 neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 
 m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
@@ -171,14 +172,14 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
                        data=price, 
                        key_on="feature.id", 
                        fill_color='YlOrRd', 
-                       legend_name='Gemiddelde prijs (€)'
+                       legend_name='Gemiddelde Airbnb prijs (€)'
                       ).add_to(m2)
         elif option2 == 'Gemiddelde beschikbaarheid':
             Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
-                       data=gem_woz, 
+                       data=gemwoz, 
                        key_on="feature.id", 
                        fill_color='YlOrRd', 
-                       legend_name='Gemiddelde beschikbaarheid (dagen)'
+                       legend_name='Gemiddelde Huisprijs (€)'
                       ).add_to(m2)
         st_data = st_folium(m2, width=700)
     
