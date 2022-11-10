@@ -321,10 +321,10 @@ kunnen hoe hoger de prijs wordt.''')
 with h6:
     st.header('Conclusie')
     st.text('''- Er is een duidelijke relatie tussen het aantal personen per AIRBNB 
-en de AIRBNB prijs.
+  en de AIRBNB prijs.
 - Er is geen duidelijke relatie tussen de review-score en de AIRBNB prijs.
 - Er is een sterke relatie tussen de gemiddelde huizenprijs 
-en de gemiddelde AIRBNB prijs per stadsdeel.
+  en de gemiddelde AIRBNB prijs per stadsdeel.
 - Het Spacy model werkte heel goed!''')
     
     conclusie = conclusie.drop('Unnamed: 0', axis=1)
