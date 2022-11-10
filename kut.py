@@ -59,6 +59,7 @@ price = listings_df.groupby('neighbourhood').price.mean()
 gem_woz_data={'A Centrum':563409.0,'E West':428650.0,'F Nieuw-West':333983.0,'K Zuid':572937.0,'M Oost':459254.0,'N Noord':356968.0,'T Zuidoost':257697.0}
 gem_woz_index=['A Centrum','E West','F Nieuw-West','K Zuid','M Oost','N Noord','T Zuidoost']
 gem_woz = pd.Series(data=gem_woz_data, index=gem_woz_index)
+gem_woz.index.name = 'neighbourhood'
 
 neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 
