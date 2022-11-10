@@ -20,6 +20,8 @@ from folium.plugins import HeatMap, MarkerCluster, HeatMapWithTime
 import streamlit as st
 from streamlit_folium import st_folium
 
+st.set_page_config(
+    page_title="VA Eind")
 
 # ## Importing the CSVs
 
@@ -80,8 +82,7 @@ m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
 # In[20]:
 
 
-st.set_page_config(
-    page_title="VA Eind")
+
 
 
 # In[21]:
