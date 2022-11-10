@@ -23,7 +23,7 @@ from streamlit_folium import st_folium
 
 # ## Importing the CSVs
 
-# In[7]:
+# In[44]:
 
 
 listings_df = pd.read_csv('listings.csv')
@@ -33,6 +33,7 @@ personen_df = pd.read_csv('personen.csv')
 ratings_df = pd.read_csv('PriceRatingDF.csv')
 reviews_details_df = pd.read_csv('reviews_details.csv')
 listings_woz = pd.read_csv('listings_woz.csv')
+conclusie = pd.read_csv('conclusie.csv')
 
 
 # In[8]:
@@ -321,6 +322,10 @@ with h6:
     st.header('Conclusie')
     st.text('''- Er is een duidelijke relatie tussen het aantal personen per AIRBNB en de AIRBNB prijs.
 - Er is geen duidelijke relatie tussen de review-score en de AIRBNB prijs.
-- Er is ????? relatie tussen de huizenprijs en de AIRBNB prijs.
+- Er is een sterke relatie tussen de gemiddelde huizenprijs en de gemiddelde AIRBNB prijs per stadsdeel.
 - Het Spacy model werkte heel goed!''')
+    
+    figconc = plt.figure(figsize=(10,4))
+    sns.heatmap(data=conclusie.corr(), cmap = "YlGnBu", annot=True, fmt=".2f")
+    st.pyplot(figconc)
 
