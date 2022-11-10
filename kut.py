@@ -293,11 +293,14 @@ with h5:
 in dit deel onder de loep genomen. Eerst wordt er gekeken naar de verdeling van het
 aantal personen per AIRBNB locatie.''')
     
+    xrange = st.slider('X bereik',0,8,18)
+    
     fig2 = plt.figure(figsize=(10,4))
     plt.hist(personen_df['accommodates'], bins=10)
     plt.title('Verdeling van aantal personen')
     plt.xlabel('Aantal personen')
     plt.ylabel('Aantal')
+    plt.xlim([0,xrange])
     st.pyplot(fig2)
     
     st.text('''Uit de histogram blijkt dat de 2 persoons AIRBNB het meest voorkomt in Amsterdam. En 
@@ -306,6 +309,7 @@ regressieplot gemaakt tussen het aantal personen en de prijs.''')
     
     fig3 = plt.figure(figsize=(10,4))
     sns.regplot(data=personen_df, x='accommodates', y='price', scatter_kws={'alpha':0.25}, x_jitter=0.1).set(title='Verband tussen het aantal personen en de Airbnb prijs', xlabel='Aantal personen', ylabel='Prijs (€)')
+    ax.set_xlim(0,xrange)
     st.pyplot(fig3)
     
     st.text('''Uit de bovenstaande regressieplot blijkt dat er correlatie is tussen het aantal 
@@ -321,10 +325,10 @@ kunnen hoe hoger de prijs wordt.''')
 with h6:
     st.header('Conclusie')
     st.text('''- Er is een duidelijke relatie tussen het aantal personen per AIRBNB 
-  en de AIRBNB prijs.
+en de AIRBNB prijs.
 - Er is geen duidelijke relatie tussen de review-score en de AIRBNB prijs.
 - Er is een sterke relatie tussen de gemiddelde huizenprijs 
-  en de gemiddelde AIRBNB prijs per stadsdeel.
+en de gemiddelde AIRBNB prijs per stadsdeel.
 - Het Spacy model werkte heel goed!''')
     
     conclusie = conclusie.drop('Unnamed: 0', axis=1)
