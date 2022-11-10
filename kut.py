@@ -46,7 +46,7 @@ ratings_df = ratings_df.rename(columns={'review_scores_rating':'Review score', '
 # In[5]:
 
 
-listings_df.columns
+#listings_df.columns
 
 
 # ## Maps
