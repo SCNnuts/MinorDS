@@ -187,7 +187,7 @@ goedkoper het wordt.''')
     st.pyplot(fig)
     
     corr_matrix = np.corrcoef(woz_df['gemiddelde WOZ-waarde'], woz_df['gemiddelde Airbnb prijs'])
-    corr = corr_matrix2[0,1]
+    corr = corr_matrix[0,1]
     R_sq = corr**2
     
     st.code('''corr_matrix = np.corrcoef(woz_df['gemiddelde WOZ-waarde'], woz_df['gemiddelde Airbnb prijs'])
