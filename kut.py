@@ -307,9 +307,9 @@ aantal personen per AIRBNB locatie.''')
 hoe meer personen in de AIRBNB kunnen, hoe minder deze voorkomen. Nu wordt er een 
 regressieplot gemaakt tussen het aantal personen en de prijs.''')
     
-    fig3 = plt.figure(figsize=(10,4))
+    fig3, ax3 = plt.figure(figsize=(10,4))
     sns.regplot(data=personen_df, x='accommodates', y='price', scatter_kws={'alpha':0.25}, x_jitter=0.1).set(title='Verband tussen het aantal personen en de Airbnb prijs', xlabel='Aantal personen', ylabel='Prijs (€)')
-    ax.set_xlim(0,xrange)
+    ax3.set_xlim(0,xrange)
     st.pyplot(fig3)
     
     st.text('''Uit de bovenstaande regressieplot blijkt dat er correlatie is tussen het aantal 
