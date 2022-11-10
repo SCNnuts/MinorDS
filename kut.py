@@ -60,6 +60,7 @@ gem_woz_data={'A Centrum':563409.0,'E West':428650.0,'F Nieuw-West':333983.0,'K 
 gem_woz_index=['A Centrum','E West','F Nieuw-West','K Zuid','M Oost','N Noord','T Zuidoost']
 gem_woz = pd.Series(data=gem_woz_data, index=gem_woz_index)
 gem_woz.index.name = 'neighbourhood'
+gem_woz.name = 'gemiddelde WOZ-waarde'
 
 neighbourhoods_geoj.set_index('neighbourhood', inplace=True)
 
