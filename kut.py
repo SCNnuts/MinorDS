@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[6]:
 
 
 import pandas as pd
@@ -20,12 +20,10 @@ from folium.plugins import HeatMap, MarkerCluster, HeatMapWithTime
 import streamlit as st
 from streamlit_folium import st_folium
 
-st.set_page_config(
-    page_title="VA Eind")
 
 # ## Importing the CSVs
 
-# In[4]:
+# In[7]:
 
 
 listings_df = pd.read_csv('listings.csv')
@@ -37,21 +35,15 @@ reviews_details_df = pd.read_csv('reviews_details.csv')
 listings_woz = pd.read_csv('listings_woz.csv')
 
 
-# In[55]:
+# In[8]:
 
 
 ratings_df = ratings_df.rename(columns={'review_scores_rating':'Review score', 'positive':'Review score model', 'price':'Prijs'})
 
 
-# In[5]:
-
-
-#listings_df.columns
-
-
 # ## Maps
 
-# In[39]:
+# In[10]:
 
 
 m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
@@ -59,7 +51,7 @@ m1 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=12)
 HeatMap(data=listings_df[['latitude', 'longitude']], radius=15, min_opacity=0.3).add_to(m1)
 
 
-# In[43]:
+# In[11]:
 
 
 price = listings_df.groupby('neighbourhood').price.mean()
@@ -79,19 +71,20 @@ m2 = folium.Map(location=[52.37,4.89], tiles='cartodbpositron', zoom_start=11)
 
 # ## Titels
 
-# In[20]:
+# In[12]:
 
 
+st.set_page_config(
+    page_title="VA Eind")
 
 
-
-# In[21]:
+# In[13]:
 
 
 st.title('Welke factoren kunnen de Airbnb prijs in Amsterdam beïnvloeden?')
 
 
-# In[22]:
+# In[14]:
 
 
 h1, h2, h3, h4, h5, h6 = st.tabs(['Inleiding','Gebruikte datasets','Locatie & Huisprijs','Reviews','Aantal Personen','Conclusie'])
@@ -99,13 +92,13 @@ h1, h2, h3, h4, h5, h6 = st.tabs(['Inleiding','Gebruikte datasets','Locatie & Hu
 
 # ### H1 Inleiding
 
-# In[23]:
+# In[15]:
 
 
 from PIL import Image
 
 
-# In[24]:
+# In[16]:
 
 
 with h1:
@@ -125,7 +118,7 @@ hier meer over verteld worden, maar eerst zullen de datasets verduidelijkt worde
 
 # ### H2 Gebruikte datasets
 
-# In[64]:
+# In[17]:
 
 
 with h2:
@@ -150,7 +143,7 @@ datasets te zien.''')
 
 # ### H3 Locatie + WOZ
 
-# In[46]:
+# In[18]:
 
 
 with h3:
@@ -167,15 +160,15 @@ invloed is van de huisprijs op de prijs van de AIRBNB. ''')
     if option == 'Heatmap':
         st_data = st_folium(m1, width=700)
     elif option == 'Choropleth':
-        option2 = st.selectbox('Wat wil je zien?', ('Gemiddelde prijs','Gemiddelde beschikbaarheid'))
-        if option2 == 'Gemiddelde prijs':
+        option2 = st.selectbox('Wat wil je zien?', ('Gemiddelde Airbnb prijs','Gemiddelde huisprijs'))
+        if option2 == 'Gemiddelde Airbnb prijs':
             Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
                        data=price, 
                        key_on="feature.id", 
                        fill_color='YlOrRd', 
                        legend_name='Gemiddelde Airbnb prijs (€)'
                       ).add_to(m2)
-        elif option2 == 'Gemiddelde beschikbaarheid':
+        elif option2 == 'Gemiddelde huisprijs':
             Choropleth(geo_data = neighbourhoods_geoj['geometry'], 
                        data=gemwoz, 
                        key_on="feature.id", 
@@ -202,7 +195,7 @@ correlatie hebben met de AIRBNB prijs.''')
 
 # ### H4 Reviews
 
-# In[27]:
+# In[19]:
 
 
 with h4:
@@ -279,7 +272,7 @@ vinden.''')
 
 # ### H5 Aantal Personen
 
-# In[48]:
+# In[20]:
 
 
 with h5:
@@ -310,7 +303,7 @@ kunnen hoe hoger de prijs wordt.''')
 
 # ### H6 Conclusie
 
-# In[29]:
+# In[21]:
 
 
 with h6:
