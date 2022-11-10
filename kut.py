@@ -334,6 +334,6 @@ with h6:
     conclusie = conclusie.drop('Unnamed: 0', axis=1)
     
     figconc = plt.figure(figsize=(10,4))
-    sns.heatmap(data=conclusie.corr(), cmap = "YlGnBu", annot=True, fmt=".2f")
+    sns.heatmap(data=conclusie.corr(), cmap = "YlGnBu", annot=True, fmt=".2f").set(title='De correlatie tussen de Airbnb prijs en de factoren')
     st.pyplot(figconc)
 
