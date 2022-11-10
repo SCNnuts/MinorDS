@@ -325,6 +325,8 @@ with h6:
 - Er is een sterke relatie tussen de gemiddelde huizenprijs en de gemiddelde AIRBNB prijs per stadsdeel.
 - Het Spacy model werkte heel goed!''')
     
+    conclusie = conclusie.drop('Unnamed: 0', axis=1)
+    
     figconc = plt.figure(figsize=(10,4))
     sns.heatmap(data=conclusie.corr(), cmap = "YlGnBu", annot=True, fmt=".2f")
     st.pyplot(figconc)
