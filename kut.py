@@ -191,7 +191,7 @@ corr = corr_matrix2[0,1]
 R_sq = corr**2
 R_sq''')
     
-    st.write("Coefficient of determination: %.2f" % r_sq)
+    st.write("Coefficient of determination: "R_sq)
     
     st.text('''In de bovenstaande regressieplot is de relatie tussen de huisprjis en AIRBNB prijs 
 weergeggeven, en hieruit blijkt dat er een hele mooie lineaire regressielijn 
