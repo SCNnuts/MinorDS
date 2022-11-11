@@ -226,7 +226,7 @@ naar positief/negatief.''')
     
     ### DATAFRAME ###
     image1 = Image.open('image1.png')
-    st.image(image1, width=300)
+    st.image(image1, width=600)
     
     st.text('''Hierboven is het dataframe te zien waarin de Polarity score is berekend. Aangezien
 deze score per review is weergeven, moet dit dataframe gesorteerd worden per AIRBNB
@@ -234,14 +234,14 @@ locatie. ''')
     
     ### DATAFRAME ###
     image2 = Image.open('image2.png')
-    st.image(image2, width=300)
+    st.image(image2, width=200)
     
     st.text('''Nu de Polarity per adres bekend is, kan er gekeken worden of het Spacy package de
 comments accuraat omgezet heeft naar Polarity.''')
     
     ### DATAFRAME ###
     image3 = Image.open('image3.png')
-    st.image(image3, width=300)
+    st.image(image3, width=600)
     
     st.text('''In dit dataframe zijn de berekende review score en werkelijke score per AIRBNB
 locatie weergeven. De spreiding van beide scores is hieronder weergegeven in een
